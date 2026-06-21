@@ -11,11 +11,11 @@ echo "=================================================="
 git fetch upstream
 
 # 尝试自动合并官方最新代码
-if ! git merge upstream/main; then
+if ! git merge upstream/master; then
     echo "🚨 警告：检测到代码冲突！"
     echo "自动更新已被打断。为了保护你的本地配置，合并操作已撤销。"
     echo "👉 请回到 AI 对话框，将此信息告诉 AI 助手，让它帮你解决冲突。"
-    git merge --abort
+    git merge --abort 2>/dev/null || true
     
     echo ""
     read -p "按回车键将使用【旧版本】继续启动，或按 Ctrl+C 退出..."
